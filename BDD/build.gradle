@@ -20,7 +20,7 @@ dependencies {
     compile group: 'info.cukes', name: 'cucumber-html', version: '0.2.6'
     compile group: 'io.cucumber', name: 'cucumber-java', version: '3.0.2'
     compile group: 'io.cucumber', name: 'cucumber-jvm-deps', version: '1.0.6'
-    compile group: 'io.cucumber', name: 'gherkin', version: '6.0.0'
+	compile group: 'info.cukes', name: 'gherkin', version: '2.12.2'
 	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'	   
     testCompile group: 'io.cucumber', name: 'cucumber-junit', version: '3.0.2'
 	testCompile group: 'org.mockito', name: 'mockito-core', version: '2.22.0'

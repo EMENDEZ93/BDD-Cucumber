@@ -1,12 +1,62 @@
 package stepDefinitions;
 
-import org.junit.runner.RunWith;
+import static org.junit.Assert.assertEquals;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(features="featureFiles", glue="stepDefinitions")
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 public class LoginStep {
+
+	WebDriver controller;
+
+	@Given("el usuario esta en la pagina de login")
+	public void el_usuario_esta_en_la_pagina_de_login() {
+		System.setProperty("webdriver.chrome.driver",
+				"/home/dezmen/Documentos/Projects/BDD-Cucumber/BDD/drivers/chromedriver");
+		controller = new ChromeDriver();
+		controller.manage().window().maximize();
+		controller.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
+	}
+
+	@When("el usuario ingresa credenciales invalidas {string} y el password {string}")
+	public void el_usuario_ingresa_credenciales_invalidas_y_el_password(String email, String password) {
+		controller.findElement(By.id("MainContent_txtUserName")).sendKeys(email);
+		controller.findElement(By.id("MainContent_txtPassword")).sendKeys(password);
+	}
+
+	@Then("el usuario puede ver un mensaje de error {string}")
+	public void el_usuario_puede_ver_un_mensaje_de_error(String message) throws Throwable {
+		controller.findElement(By.id("MainContent_btnLogin")).click();
+		Thread.sleep(2000);
+
+		String result = controller.findElement(By.id("MainContent_lblTransactionResult")).getText();
+
+		controller.close();
+
+		assertEquals(result, message);
+	}
+
+	@When("el usuario ingresa credenciales validas {string} y el password {string}")
+	public void el_usuario_ingresa_credenciales_validas_y_el_password(String email, String password) {
+		controller.findElement(By.id("MainContent_txtUserName")).sendKeys(email);
+		controller.findElement(By.id("MainContent_txtPassword")).sendKeys(password);
+	}
+
+	@Then("el usuario puede ver su panel de administracion {string}")
+	public void el_usuario_puede_ver_su_panel_de_administracion(String message) throws Throwable {
+		controller.findElement(By.id("MainContent_btnLogin")).click();
+		Thread.sleep(2000);
+
+		String result = controller.findElement(By.id("conf_message")).getText();
+
+		controller.close();
+
+		assertEquals(result, message);
+	}
 
 }
