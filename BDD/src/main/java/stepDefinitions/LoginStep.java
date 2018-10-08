@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,11 +16,21 @@ public class LoginStep {
 
 	WebDriver controller;
 
-	@Given("el usuario esta en la pagina de login")
-	public void el_usuario_esta_en_la_pagina_de_login() {
+	@Before
+	public void setUp() {
 		System.setProperty("webdriver.chrome.driver",
 				"/home/dezmen/Documentos/Projects/BDD-Cucumber/BDD/drivers/chromedriver");
-		controller = new ChromeDriver();
+		controller = new ChromeDriver();		
+	}
+	
+	@After
+	public void tearDown() {
+		controller.close();		
+	}
+	
+	
+	@Given("el usuario esta en la pagina de login")
+	public void el_usuario_esta_en_la_pagina_de_login() {
 		controller.manage().window().maximize();
 		controller.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
 	}
@@ -36,8 +48,6 @@ public class LoginStep {
 
 		String result = controller.findElement(By.id("MainContent_lblTransactionResult")).getText();
 
-		controller.close();
-
 		assertEquals(result, message);
 	}
 
@@ -53,8 +63,6 @@ public class LoginStep {
 		Thread.sleep(2000);
 
 		String result = controller.findElement(By.id("conf_message")).getText();
-
-		controller.close();
 
 		assertEquals(result, message);
 	}

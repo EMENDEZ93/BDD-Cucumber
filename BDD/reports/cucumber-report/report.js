@@ -47,6 +47,9 @@ formatter.scenario({
   "description": "",
   "keyword": "Scenario Outline"
 });
+formatter.before({
+  "status": "passed"
+});
 formatter.step({
   "name": "el usuario esta en la pagina de login",
   "keyword": "Given "
@@ -75,6 +78,9 @@ formatter.match({
   "location": "LoginStep.el_usuario_puede_ver_un_mensaje_de_error(String)"
 });
 formatter.result({
+  "status": "passed"
+});
+formatter.after({
   "status": "passed"
 });
 formatter.scenarioOutline({
@@ -120,6 +126,9 @@ formatter.scenario({
   "description": "",
   "keyword": "Scenario Outline"
 });
+formatter.before({
+  "status": "passed"
+});
 formatter.step({
   "name": "el usuario esta en la pagina de login",
   "keyword": "Given "
@@ -148,6 +157,9 @@ formatter.match({
   "location": "LoginStep.el_usuario_puede_ver_su_panel_de_administracion(String)"
 });
 formatter.result({
+  "status": "passed"
+});
+formatter.after({
   "status": "passed"
 });
 });
