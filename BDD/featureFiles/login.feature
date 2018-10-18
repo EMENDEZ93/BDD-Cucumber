@@ -14,7 +14,8 @@ Feature: prueba de login
 
   Scenario Outline: el usuario se puede logear con credenciales validas
     Given el usuario esta en la pagina de login
-    When el usuario ingresa credenciales validas "<email>" y el password "<password>"
+    When el usuario ingresa credenciales validas "<email>" 
+    And y el password "<password>"
     Then el usuario puede ver su panel de administracion "<message>"
       
     Examples: 

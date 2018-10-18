@@ -6,7 +6,8 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="featureFiles", glue="stepDefinitions", plugin = "html:reports/cucumber-report" )
+@CucumberOptions(features="featureFiles", glue="stepDefinitions", plugin = "html:reports/cucumber-report" /*, 
+				tags = {"@Register"}*/)
 public class Runner {
 
 }

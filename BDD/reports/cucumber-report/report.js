@@ -67,11 +67,9 @@ formatter.step({
   "name": "el usuario ingresa credenciales invalidas \"didier@unac.edu.co\" y el password \"didier2\"",
   "keyword": "When "
 });
-formatter.match({
-  "location": "LoginStep.el_usuario_ingresa_credenciales_invalidas_y_el_password(String,String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "passed"
+  "status": "undefined"
 });
 formatter.step({
   "name": "el usuario puede ver un mensaje de error \"Invalid password, try again!\"",
@@ -81,7 +79,7 @@ formatter.match({
   "location": "LoginStep.el_usuario_puede_ver_un_mensaje_de_error(String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -99,8 +97,12 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.step({
-  "name": "el usuario ingresa credenciales validas \"\u003cemail\u003e\" y el password \"\u003cpassword\u003e\"",
+  "name": "el usuario ingresa credenciales validas \"\u003cemail\u003e\"",
   "keyword": "When "
+});
+formatter.step({
+  "name": "y el password \"\u003cpassword\u003e\"",
+  "keyword": "And "
 });
 formatter.step({
   "name": "el usuario puede ver su panel de administracion \"\u003cmessage\u003e\"",
@@ -149,11 +151,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "el usuario ingresa credenciales validas \"didier@unac.edu.co\" y el password \"didier\"",
+  "name": "el usuario ingresa credenciales validas \"didier@unac.edu.co\"",
   "keyword": "When "
 });
 formatter.match({
-  "location": "LoginStep.el_usuario_ingresa_credenciales_validas_y_el_password(String,String)"
+  "location": "LoginStep.el_usuario_ingresa_credenciales_validas(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "y el password \"didier\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "LoginStep.y_el_password(String)"
 });
 formatter.result({
   "status": "passed"
@@ -178,10 +190,15 @@ formatter.uri("featureFiles/register.feature");
 formatter.feature({
   "name": "prueba de registro",
   "description": "\tyo como usuario de SDETrainning\n  Quiero cuando ingrese a la pagina de registro\n  Me pueda registrar",
-  "keyword": "Feature"
+  "keyword": "Feature",
+  "tags": [
+    {
+      "name": "@Register"
+    }
+  ]
 });
 formatter.scenarioOutline({
-  "name": "el usuario se puede logear con credenciales validas",
+  "name": "el usuario se puede registrarse",
   "description": "",
   "keyword": "Scenario Outline"
 });
@@ -221,9 +238,14 @@ formatter.examples({
   ]
 });
 formatter.scenario({
-  "name": "el usuario se puede logear con credenciales validas",
+  "name": "el usuario se puede registrarse",
   "description": "",
-  "keyword": "Scenario Outline"
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@Register"
+    }
+  ]
 });
 formatter.before({
   "status": "passed"
@@ -255,9 +277,11 @@ formatter.step({
   "name": "el usuario puede ver un mensaje de exito al registrarse",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "RegisterStep.el_usuario_puede_ver_un_mensaje_de_exito_al_registrarse()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.after({
   "status": "passed"

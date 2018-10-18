@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class RegisterStep {
@@ -26,7 +27,6 @@ public class RegisterStep {
 	
 	@After
 	public void tearDown() throws Throwable  {
-		Thread.sleep(10000);
 		controller.close();		
 	}
 	
@@ -36,7 +36,7 @@ public class RegisterStep {
 		controller.get("http://sdettraining.com/trguitransactions/NewAccount.aspx");	
 	}
 
-	@When("el usuario ingresa sus datos {string} {string} {string} {string}")
+	@When("^el usuario ingresa sus datos \"(.*)\" \"(.*)\" \"(.*)\" \"(.*)\"$")
 	public void el_usuario_ingresa_sus_datos(String name, String email, String phone, String password) {
 		controller.findElement(By.id("MainContent_txtFirstName")).sendKeys(name);
 		controller.findElement(By.id("MainContent_txtEmail")).sendKeys(email);		
@@ -47,12 +47,15 @@ public class RegisterStep {
 		
 		dropDownCountry = new Select(controller.findElement(By.id("MainContent_menuCountry")));
 		dropDownCountry.selectByVisibleText("Italy");
-		
-		controller.findElement(By.id("MainContent_btnSubmit")).click();
-		
+
+		controller.findElement(By.id("MainContent_btnSubmit")).click();			
+
+	}
+	
+	@Then("el usuario puede ver un mensaje de exito al registrarse")
+	public void el_usuario_puede_ver_un_mensaje_de_exito_al_registrarse() {
 		String result = controller.findElement(By.id("MainContent_lblTransactionResult")).getText();
-		
-		assertEquals("Customer information added successfully", result);
+		assertEquals("Customer information added successfully", result);		
 		
 	}
 	
