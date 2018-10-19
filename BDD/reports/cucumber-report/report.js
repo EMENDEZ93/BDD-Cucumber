@@ -14,8 +14,12 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.step({
-  "name": "el usuario ingresa credenciales invalidas \"\u003cemail\u003e\" y el password \"\u003cpassword\u003e\"",
+  "name": "el usuario ingresa credenciales invalidas \"\u003cemail\u003e\"",
   "keyword": "When "
+});
+formatter.step({
+  "name": "y el password invalido \"\u003cpassword\u003e\"",
+  "keyword": "And "
 });
 formatter.step({
   "name": "el usuario puede ver un mensaje de error \"\u003cmessage\u003e\"",
@@ -50,9 +54,6 @@ formatter.scenario({
 formatter.before({
   "status": "passed"
 });
-formatter.before({
-  "status": "passed"
-});
 formatter.step({
   "name": "el usuario esta en la pagina de login",
   "keyword": "Given "
@@ -64,12 +65,24 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "el usuario ingresa credenciales invalidas \"didier@unac.edu.co\" y el password \"didier2\"",
+  "name": "el usuario ingresa credenciales invalidas \"didier@unac.edu.co\"",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "LoginStep.el_usuario_ingresa_credenciales_validas(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
+});
+formatter.step({
+  "name": "y el password invalido \"didier2\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "LoginStep.y_el_password(String)"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.step({
   "name": "el usuario puede ver un mensaje de error \"Invalid password, try again!\"",
@@ -79,9 +92,6 @@ formatter.match({
   "location": "LoginStep.el_usuario_puede_ver_un_mensaje_de_error(String)"
 });
 formatter.result({
-  "status": "skipped"
-});
-formatter.after({
   "status": "passed"
 });
 formatter.after({
@@ -93,7 +103,7 @@ formatter.scenarioOutline({
   "keyword": "Scenario Outline"
 });
 formatter.step({
-  "name": "el usuario esta en la pagina de login",
+  "name": "el usuario esta en la pagina de login con",
   "keyword": "Given "
 });
 formatter.step({
@@ -137,15 +147,12 @@ formatter.scenario({
 formatter.before({
   "status": "passed"
 });
-formatter.before({
-  "status": "passed"
-});
 formatter.step({
-  "name": "el usuario esta en la pagina de login",
+  "name": "el usuario esta en la pagina de login con",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "LoginStep.el_usuario_esta_en_la_pagina_de_login()"
+  "location": "LoginStep.el_usuario_esta_en_la_pagina_de_login_con()"
 });
 formatter.result({
   "status": "passed"
@@ -155,7 +162,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.match({
-  "location": "LoginStep.el_usuario_ingresa_credenciales_validas(String)"
+  "location": "LoginStep.el_usuario_ingresa_credenciales_invalidas(String)"
 });
 formatter.result({
   "status": "passed"
@@ -165,7 +172,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "LoginStep.y_el_password(String)"
+  "location": "LoginStep.y_el_password_invalido_didier(String)"
 });
 formatter.result({
   "status": "passed"
@@ -178,9 +185,6 @@ formatter.match({
   "location": "LoginStep.el_usuario_puede_ver_su_panel_de_administracion(String)"
 });
 formatter.result({
-  "status": "passed"
-});
-formatter.after({
   "status": "passed"
 });
 formatter.after({
@@ -250,41 +254,29 @@ formatter.scenario({
 formatter.before({
   "status": "passed"
 });
-formatter.before({
-  "status": "passed"
-});
 formatter.step({
   "name": "el usuario esta en la pagina de registro",
   "keyword": "Given "
 });
-formatter.match({
-  "location": "RegisterStep.el_usuario_esta_en_la_pagina_de_registro()"
-});
+formatter.match({});
 formatter.result({
-  "status": "passed"
+  "status": "undefined"
 });
 formatter.step({
   "name": "el usuario ingresa sus datos \"Edwin Méndez\" \"edwin01@unac.edu.co\" \"123456789\" \"calidad123\"",
   "keyword": "When "
 });
-formatter.match({
-  "location": "RegisterStep.el_usuario_ingresa_sus_datos(String,String,String,String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "passed"
+  "status": "undefined"
 });
 formatter.step({
   "name": "el usuario puede ver un mensaje de exito al registrarse",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "RegisterStep.el_usuario_puede_ver_un_mensaje_de_exito_al_registrarse()"
-});
+formatter.match({});
 formatter.result({
-  "status": "passed"
-});
-formatter.after({
-  "status": "passed"
+  "status": "undefined"
 });
 formatter.after({
   "status": "passed"

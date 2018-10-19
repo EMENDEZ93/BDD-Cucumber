@@ -17,7 +17,7 @@ public class RegisterStep {
 
 	WebDriver controller;
 	Select dropDownCountry;
-	
+	/*
 	@Before
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver",
@@ -58,5 +58,5 @@ public class RegisterStep {
 		assertEquals("Customer information added successfully", result);		
 		
 	}
-	
+	*/
 }
